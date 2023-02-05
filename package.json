@@ -6,9 +6,14 @@
     },
     "devDependencies": {
         "axios": "^1.1.2",
+        "laravel-mix": "^6.0.49",
         "laravel-vite-plugin": "^0.7.2",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@picocss/pico": "^1.5.7",
+        "jquery": "^3.6.3"
     }
 }
