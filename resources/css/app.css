@@ -1,1 +1,36 @@
 @import '@picocss/pico';
+:root {
+    --dark: #0f171d;
+}
+#home-section{
+    height: 100vh;
+    overflow: hidden;
+}
+#enroll {
+    top: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0,0.4);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+body{
+    overflow: hidden;
+}
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--dark) ;
+    padding: 0 20px;
+}
+ul a{
+    color: white;
+}
+#enroll h3{
+    text-align: center;
+}
