@@ -23,7 +23,7 @@
 body{
     overflow: hidden;
 }
-nav{
+#main-nav{
     position: fixed;
     top: 0;
     z-index: 1;
@@ -36,4 +36,74 @@ ul a{
 }
 #enroll h3{
     text-align: center;
+}
+#form-container {
+    position: absolute;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 1rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    background-color: #252a37;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20rem;
+    overflow: hidden;
+    
+   
+}
+main {
+    
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-y: scroll;
+}
+label#weeks-num{
+    text-align: center;
+}
+@keyframes leave {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+@keyframes enter {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100;
+       
+    }
+}
+
+.inputs-container h1 {
+    text-align: center;
+}
+.inputs-container  details button {
+    width: 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0;
+}
+.inputs-container  details .grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.rest {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
