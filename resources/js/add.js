@@ -253,9 +253,9 @@ function generateExerciseInputs() {
                 </div>
                 `);
     }
-    $(this).parent().parent().find('.exercises-inputs-container grid label input').each( function () {
+    $(this).parent().parent().find('.exercises-inputs-container .grid label input').each( function () {
         $(this).on('input', function(){
-            $(this).attr('aria-invalid',true);
+            $(this).removeAttr('aria-invalid');
         })
     });
     

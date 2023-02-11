@@ -74,9 +74,9 @@ function generateExerciseInputs() {
   } else {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().find('.exercises-inputs-container').append("\n                <div class =\"grid forRest\"><label><input data-type=\"hidden\" type=\"hidden\" value=\"Rest\"></label></div>\n                <div class=\"rest\">\n                    <kbd>\n                        <strong>Rest: </strong>\n                        <s> No Training for Today </s>\n                    </kbd>\n                </div>\n                ");
   }
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().find('.exercises-inputs-container grid label input').each(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().find('.exercises-inputs-container .grid label input').each(function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).on('input', function () {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('aria-invalid', true);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).removeAttr('aria-invalid');
     });
   });
 }
