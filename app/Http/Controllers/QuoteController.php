@@ -7,6 +7,6 @@ class QuoteController extends Controller
 {
     public function getQuote() {
         
-        return view('welcome',quote::query()->inRandomOrder()->limit());
+        return view('welcome',quote::query()->inRandomOrder()->first());
     }
 }

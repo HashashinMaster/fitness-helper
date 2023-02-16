@@ -12,7 +12,7 @@
         @php 
         $videos = ["/videos/lifting.mp4", "/videos/7bal.mp4"];
         @endphp
-        <video autoplay width="100%" src= {{$videos[array_rand($videos)]}} ></video>
+        <video autoplay muted width="100%" src= {{$videos[array_rand($videos)]}} ></video>
         <div id="enroll" >
             <blockquote>
                 <h3>{{$quote}}</h3>

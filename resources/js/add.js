@@ -1,5 +1,6 @@
 import $ from 'jquery';
-
+import axios from 'axios';
+import { isArray, reject } from 'lodash';
 
 let data = {};
 let pageIndex = 1;
@@ -9,6 +10,7 @@ let maxPages = 1;
 $(() => {
     $('#go-next')
         .on('click', function () {
+            
             if (pageIndex === 1){
                 weeks(this);
                 return;
@@ -21,8 +23,7 @@ $(() => {
                 
             }
             else if(validateAndCollectInfo())
-                alert('submiting form')
-            
+                    uploadVideos()
         })
     
 
@@ -191,6 +192,7 @@ function goNext(el) {
 }
 
 function generateExerciseInputs() {
+    
     const input = $(this).parent().find('input');   
     input.attr('aria-invalid',false);
     if(!(parseInt(input.val()) >=  0) || !input.val()){
@@ -235,7 +237,7 @@ function generateExerciseInputs() {
                         <input type="numbers" data-type="number" placeholder="20..." />
                     </label>
                     <label> upload a video
-                        <input data-type="file" type="file"/>
+                        <input data-type="file" type="file" accept="video/*"/>
                     </label>
                 </div>
                 `)
@@ -258,7 +260,6 @@ function generateExerciseInputs() {
             $(this).removeAttr('aria-invalid');
         })
     });
-    
 }
 function validateAndCollectInfo() {
     let allGood = true;
@@ -310,7 +311,7 @@ function validateAndCollectInfo() {
                             data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1].muscle = $(this).parent().parent().parent().find('.exercises-inputs-container').find('.grid').find('select').toArray()[i-1].value;
                             for(let j = 4 * (i-1); j<5 *i; j++){
                                 if(inputs.toArray()[j].type === "file")
-                                    data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1]["media"] = inputs.toArray()[j].files[0];
+                                    data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1]["video"] = inputs.toArray()[j].files[0];
             
                                 else
                                     data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1][$(inputs.toArray()[j]).parent().text()] = inputs.toArray()[j].value;
@@ -325,3 +326,85 @@ function validateAndCollectInfo() {
     })
     return allGood;
 }
+async function uploadVideos () {
+    $('body')
+        .append(`
+        <div id="upload-pop-up">
+            <div id="upload-content-container">
+            
+            </div>
+        </div>`);
+
+    for( const week in data)
+        for (const day in data[week]){
+            if(isArray( data[week][day]))
+                for( const exercise in data[week][day] ){
+                    try {
+                        $('#upload-content-container')
+                        .append(` 
+                        <div class="loading-container">
+                            <div class="loading" aria-busy="true"></div>
+                            <p>downloading the video pls wait...</p>
+                            </div>
+                        </div>`
+                        )
+                        const res = await axios.post('/api/upload',{ video: data[week][day][exercise].video },{
+                            'headers': {
+                                'Content-Type':'multipart/form-data'
+                            }
+                        })
+                        if(res.data.success){
+                            data[week][day][exercise].video = res.data.path;
+                            const imageBlob = await getVideoFrameAndBlob(res.data.path);
+                            const res2 = await axios.post('/api/upload',{ image: imageBlob },{
+                                'headers': {
+                                    'Content-Type':'multipart/form-data'
+                                }
+                            })
+                            if(res2.data.success){
+                                console.log(res2.data);
+                                data[week][day][exercise].thumbnail = res2.data.path;
+                                const image = new Image();
+                                image.src = res2.data.path;
+                                image.className = "thumbs-upload";
+                                $('#upload-content-container .loading-container').remove();
+                                $('#upload-content-container').prepend(image);
+                                console.log(data)
+                            }
+                        }
+                    } catch (error) {
+                        console.log(err.message)
+                    }
+                
+                }
+        }
+       location.replace('/');
+    
+}
+//getting video frame
+function getVideoFrameAndBlob(url) {
+    $('#upload-content-container')
+    .append(`
+    <video style="display:none;" src=${url}></video>`)
+    
+    return new Promise( (resolve, reject) => {
+        $('video').on('canplay', async function(){
+            const bitmap = await createImageBitmap($(this)[0], { 
+              imageOrientation: 'none', 
+              resizeWidth: $(this).prop('videoWidth'), 
+              resizeHeight: $(this).prop('videoHeight')
+            });
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width =  $(this).prop('videoWidth');
+            canvas.height = $(this).prop('videoHeight');
+            ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob( (blob) => {
+                resolve(blob)
+
+            })
+      
+        });
+    })
+}
+  

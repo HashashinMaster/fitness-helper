@@ -94,11 +94,46 @@ label#weeks-num{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
 }
 .rest {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+#upload-pop-up{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    z-index: 5;
+}
+#upload-content-container{
+    width: 50rem;
+    min-height: 20rem;
+    background-color: #252a37;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    height: fit-content;
+}
+.loading{
+    width: 15rem;
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px black;
+}
+.loading-container{
+    height: fit-content;
+}
+.thumbs-upload {
+    width: 15rem;
+    height: fit-content;
 }
