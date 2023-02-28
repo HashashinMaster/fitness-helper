@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,6 @@ use App\Http\Controllers\QuoteController;
 */
 
 Route::get('/', [QuoteController::class,'getQuote']);
+Route::get('/add',[ProgramController::class,'add']);
+Route::get('/programs',[ProgramController::class,'show']);
 
-Route::get('/add', function () {
-    return view('addprogram');
-});

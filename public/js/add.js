@@ -24,17 +24,42 @@ var data = {};
 var pageIndex = 1;
 var maxPages = 1;
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#go-next').on('click', function () {
-    if (pageIndex === 1) {
-      weeks(this);
-      return;
-    }
-    if (pageIndex <= maxPages) {
-      if (validateAndCollectInfo()) {
-        goNext(this);
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#go-next').on('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          if (!(pageIndex === 1)) {
+            _context.next = 3;
+            break;
+          }
+          weeks(this);
+          return _context.abrupt("return");
+        case 3:
+          if (!(pageIndex <= maxPages)) {
+            _context.next = 7;
+            break;
+          }
+          if (validateAndCollectInfo()) {
+            goNext(this);
+          }
+          _context.next = 12;
+          break;
+        case 7:
+          if (!validateAndCollectInfo()) {
+            _context.next = 12;
+            break;
+          }
+          _context.next = 10;
+          return uploadVideos();
+        case 10:
+          _context.next = 12;
+          return uploadData();
+        case 12:
+        case "end":
+          return _context.stop();
       }
-    } else if (validateAndCollectInfo()) uploadVideos();
-  });
+    }, _callee, this);
+  })));
 });
 function weeks(el) {
   if (parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('input').val()) < 1 || !jquery__WEBPACK_IMPORTED_MODULE_0___default()('input').val()) {
@@ -132,7 +157,7 @@ function validateAndCollectInfo() {
         data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()].push({});
         data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()][_i - 1].muscle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().find('.exercises-inputs-container').find('.grid').find('select').toArray()[_i - 1].value;
         for (var j = 4 * (_i - 1); j < 5 * _i; j++) {
-          if (inputs.toArray()[j].type === "file") data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()][_i - 1]["video"] = inputs.toArray()[j].files[0];else data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()][_i - 1][jquery__WEBPACK_IMPORTED_MODULE_0___default()(inputs.toArray()[j]).parent().text()] = inputs.toArray()[j].value;
+          if (inputs.toArray()[j].type === "file") data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()][_i - 1]["video"] = inputs.toArray()[j].files[0];else data['week' + (pageIndex - 1)][jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().parent().parent().parent().find('summary').text()][_i - 1][jquery__WEBPACK_IMPORTED_MODULE_0___default()(inputs.toArray()[j]).parent().text().replace(/\s/g, '')] = inputs.toArray()[j].value;
         }
       }
     } else if (inputs.val() === "Rest") {
@@ -143,42 +168,42 @@ function validateAndCollectInfo() {
 }
 function uploadVideos() {
   return _uploadVideos.apply(this, arguments);
-} //getting video frame
+}
 function _uploadVideos() {
-  _uploadVideos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+  _uploadVideos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
     var week, day, exercise, res, imageBlob, res2, image;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
         case 0:
           jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').append("\n        <div id=\"upload-pop-up\">\n            <div id=\"upload-content-container\">\n            \n            </div>\n        </div>");
-          _context2.t0 = _regeneratorRuntime().keys(data);
+          _context3.t0 = _regeneratorRuntime().keys(data);
         case 2:
-          if ((_context2.t1 = _context2.t0()).done) {
-            _context2.next = 36;
+          if ((_context3.t1 = _context3.t0()).done) {
+            _context3.next = 36;
             break;
           }
-          week = _context2.t1.value;
-          _context2.t2 = _regeneratorRuntime().keys(data[week]);
+          week = _context3.t1.value;
+          _context3.t2 = _regeneratorRuntime().keys(data[week]);
         case 5:
-          if ((_context2.t3 = _context2.t2()).done) {
-            _context2.next = 34;
+          if ((_context3.t3 = _context3.t2()).done) {
+            _context3.next = 34;
             break;
           }
-          day = _context2.t3.value;
+          day = _context3.t3.value;
           if (!(0,lodash__WEBPACK_IMPORTED_MODULE_1__.isArray)(data[week][day])) {
-            _context2.next = 32;
+            _context3.next = 32;
             break;
           }
-          _context2.t4 = _regeneratorRuntime().keys(data[week][day]);
+          _context3.t4 = _regeneratorRuntime().keys(data[week][day]);
         case 9:
-          if ((_context2.t5 = _context2.t4()).done) {
-            _context2.next = 32;
+          if ((_context3.t5 = _context3.t4()).done) {
+            _context3.next = 32;
             break;
           }
-          exercise = _context2.t5.value;
-          _context2.prev = 11;
+          exercise = _context3.t5.value;
+          _context3.prev = 11;
           jquery__WEBPACK_IMPORTED_MODULE_0___default()('#upload-content-container').append(" \n                        <div class=\"loading-container\">\n                            <div class=\"loading\" aria-busy=\"true\"></div>\n                            <p>downloading the video pls wait...</p>\n                            </div>\n                        </div>");
-          _context2.next = 15;
+          _context3.next = 15;
           return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('/api/upload', {
             video: data[week][day][exercise].video
           }, {
@@ -187,17 +212,17 @@ function _uploadVideos() {
             }
           });
         case 15:
-          res = _context2.sent;
+          res = _context3.sent;
           if (!res.data.success) {
-            _context2.next = 25;
+            _context3.next = 25;
             break;
           }
           data[week][day][exercise].video = res.data.path;
-          _context2.next = 20;
+          _context3.next = 20;
           return getVideoFrameAndBlob(res.data.path);
         case 20:
-          imageBlob = _context2.sent;
-          _context2.next = 23;
+          imageBlob = _context3.sent;
+          _context3.next = 23;
           return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('/api/upload', {
             image: imageBlob
           }, {
@@ -206,7 +231,7 @@ function _uploadVideos() {
             }
           });
         case 23:
-          res2 = _context2.sent;
+          res2 = _context3.sent;
           if (res2.data.success) {
             console.log(res2.data);
             data[week][day][exercise].thumbnail = res2.data.path;
@@ -218,47 +243,69 @@ function _uploadVideos() {
             console.log(data);
           }
         case 25:
-          _context2.next = 30;
+          _context3.next = 30;
           break;
         case 27:
-          _context2.prev = 27;
-          _context2.t6 = _context2["catch"](11);
+          _context3.prev = 27;
+          _context3.t6 = _context3["catch"](11);
           console.log(err.message);
         case 30:
-          _context2.next = 9;
+          _context3.next = 9;
           break;
         case 32:
-          _context2.next = 5;
+          _context3.next = 5;
           break;
         case 34:
-          _context2.next = 2;
+          _context3.next = 2;
           break;
         case 36:
-          location.replace('/');
-        case 37:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
-    }, _callee2, null, [[11, 27]]);
+    }, _callee3, null, [[11, 27]]);
   }));
   return _uploadVideos.apply(this, arguments);
+}
+function uploadData() {
+  return _uploadData.apply(this, arguments);
+} //getting video frame
+function _uploadData() {
+  _uploadData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.next = 2;
+          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('/api/add', {
+            data: JSON.stringify(data)
+          });
+        case 2:
+          res = _context4.sent;
+          if (res.data.success) location.replace('/programs');
+        case 4:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4);
+  }));
+  return _uploadData.apply(this, arguments);
 }
 function getVideoFrameAndBlob(url) {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#upload-content-container').append("\n    <video style=\"display:none;\" src=".concat(url, "></video>"));
   return new Promise(function (resolve, reject) {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').on('canplay', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').on('canplay', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var bitmap, canvas, ctx;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            _context.next = 2;
+            _context2.next = 2;
             return createImageBitmap(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0], {
               imageOrientation: 'none',
               resizeWidth: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).prop('videoWidth'),
               resizeHeight: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).prop('videoHeight')
             });
           case 2:
-            bitmap = _context.sent;
+            bitmap = _context2.sent;
             canvas = document.createElement('canvas');
             ctx = canvas.getContext('2d');
             canvas.width = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).prop('videoWidth');
@@ -269,9 +316,9 @@ function getVideoFrameAndBlob(url) {
             });
           case 9:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
-      }, _callee, this);
+      }, _callee2, this);
     })));
   });
 }

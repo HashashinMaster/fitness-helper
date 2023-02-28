@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/upload', [App\Http\Controllers\UploadController::class,'uploadVideo']);
+Route::post('/add', [App\Http\Controllers\ProgramController::class,'addProgram']);

@@ -9,7 +9,7 @@ let maxPages = 1;
 
 $(() => {
     $('#go-next')
-        .on('click', function () {
+        .on('click', async function () {
             
             if (pageIndex === 1){
                 weeks(this);
@@ -22,8 +22,10 @@ $(() => {
                 }
                 
             }
-            else if(validateAndCollectInfo())
-                    uploadVideos()
+            else if(validateAndCollectInfo()){
+                await uploadVideos();
+                await uploadData();
+            }
         })
     
 
@@ -314,7 +316,7 @@ function validateAndCollectInfo() {
                                     data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1]["video"] = inputs.toArray()[j].files[0];
             
                                 else
-                                    data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1][$(inputs.toArray()[j]).parent().text()] = inputs.toArray()[j].value;
+                                    data['week' + (pageIndex-1)][$(this).parent().parent().parent().parent().find('summary').text()][i-1][$(inputs.toArray()[j]).parent().text().replace(/\s/g, '' )] = inputs.toArray()[j].value;
 
                             }
                         }
@@ -378,8 +380,13 @@ async function uploadVideos () {
                 
                 }
         }
-       location.replace('/');
-    
+       
+}
+
+async function uploadData() {
+    const res = await axios.post('/api/add', {data:JSON.stringify(data)});
+        if(res.data.success)
+            location.replace('/programs');
 }
 //getting video frame
 function getVideoFrameAndBlob(url) {

@@ -9,7 +9,7 @@
             <a href="/add">Add Program</a>
         </li>
         <li>
-            <a href="">View Programs</a>
+            <a href="/programs">View Programs</a>
         </li>
         <li>
             <a href="">About</a>

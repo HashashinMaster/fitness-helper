@@ -137,3 +137,7 @@ label#weeks-num{
     width: 15rem;
     height: fit-content;
 }
+.error {
+    border-color: rgb(255, 31, 31);
+    color: rgb(255, 31, 31);
+}
