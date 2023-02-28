@@ -10,7 +10,7 @@
 </head>
 <body>
     <x-nav/>
-    <main>
+    <main id="add-main">
         <div id="form-container">
             <div class="inputs-container">
                 <label id="weeks-num" for="number-of-weeks">

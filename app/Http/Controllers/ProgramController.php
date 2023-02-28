@@ -58,10 +58,22 @@ class ProgramController extends Controller
         ];
     }
 
-    public function show() {
+    public function all() {
         return view('showprograms',["programs" => program::query()->get()]);
     }
-
+    public function find($id){
+        return view('displayprogram',['program' => program::query()->find($id)]);
+    }
+    public function editProgramName($id){
+        program::query()->find($id)->update([
+            "name" => request()->programName
+        ]);
+        return redirect('programs');
+    }
+    public function delete($id){
+        program::query()->find($id)->delete();
+        return redirect('programs');
+    }
     public function add() {
         return view('addprogram');
 

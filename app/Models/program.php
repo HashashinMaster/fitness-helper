@@ -11,6 +11,7 @@ class program extends Model
 {
     use HasFactory;
     protected $table = 'programs';
+    protected $fillable = ['name'];
     protected static function newFactory(): Factory
     {
         return ProgramsFactory::new();

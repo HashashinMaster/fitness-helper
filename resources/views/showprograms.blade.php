@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <x-ress filename="showprograms.js"/>
 </head>
 <body>
-    <main>
-        <x-nav/>
+    <x-nav/>
+    <main id="show-main">
         <table>
         <tr >
             <th colspan="5" style="text-align: center;"> 
@@ -25,7 +26,7 @@
         </tr>
         @foreach ($programs as $program)
         <tr>
-            <td>
+            <td >
                 {{$program->id}}
             </td>
 
@@ -36,15 +37,20 @@
             <td>
                 {{$program->number_of_weeks}}
             </td>
-            <td style="width: 400px;">
-                <div class="grid">
-                    <button class="outline primary">View</button>
-                    <button class="outline secondary">Update</button>
-                    <button class="outline error">Delete</button>
+            <td id="actions" style="width: 400px;">
+                <div class="grid" style="height:100%;">
+                    <a role="button" href="/program/{{$program->id}}" class="outline primary">View</a>
+                    <button  data-url="/programs/{{$program->id}}/edit" class="outline secondary">Edit</button>
+                    <form action="/programs/{{$program->id}}/delete" method="post" style="margin: 0;">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="outline error">Delete</button>
+                    </form>
                 </div>
             </td>
             <td>
                 {{$program->created_at}}
+                
             </td>
         </tr>
         @endforeach
