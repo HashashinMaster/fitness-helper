@@ -62,12 +62,17 @@ class ProgramController extends Controller
         return view('showprograms',["programs" => program::query()->get()]);
     }
     public function find($id){
-        return view('displayprogram',['program' => program::query()->find($id)]);
+
+        return view('displayprogram',[
+            'program' => program::query()->find($id),
+            'weeks' => week::all()->find($id)
+    ]);
     }
     public function editProgramName($id){
         program::query()->find($id)->update([
             "name" => request()->programName
         ]);
+        
         return redirect('programs');
     }
     public function delete($id){

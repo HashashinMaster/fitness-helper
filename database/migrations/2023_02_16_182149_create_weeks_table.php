@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('weeks', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->timestamps();
-            $table->bigInteger('program_id')->references('id')->on('programs');
+            $table->foreignId('program_id')->constrained('programs')->cascadeOnDelete();
             $table->integer('week_number');
             
         });

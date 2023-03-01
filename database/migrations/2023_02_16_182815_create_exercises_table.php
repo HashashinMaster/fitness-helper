@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exercises', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->foreignId('week_id')->references('id')->on('weeks');
+            $table->foreignId('week_id')->constrained('weeks')->cascadeOnDelete();
             $table->string('training_day');
             $table->string('action');
             $table->string('muscle')->nullable();

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('quotes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('quote');
             $table->string('author');
