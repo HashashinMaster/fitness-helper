@@ -15,4 +15,4 @@ Route::delete('/programs/{id}/delete',[ProgramController::class,'delete']);
 
 
 //Training Routes
-Route::get('/train/{programId}/{day}',[TrainController::class,"show"]);
+Route::get('/train/{weekId}/{day}',[TrainController::class,"show"]);
