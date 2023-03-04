@@ -364,14 +364,12 @@ async function uploadVideos () {
                                 }
                             })
                             if(res2.data.success){
-                                console.log(res2.data);
                                 data[week][day][exercise].thumbnail = res2.data.path;
                                 const image = new Image();
                                 image.src = res2.data.path;
                                 image.className = "thumbs-upload";
                                 $('#upload-content-container .loading-container').remove();
                                 $('#upload-content-container').prepend(image);
-                                console.log(data)
                             }
                         }
                     } catch (error) {

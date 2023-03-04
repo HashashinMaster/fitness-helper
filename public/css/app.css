@@ -8,6 +8,7 @@
 #home-section{
     height: 100vh;
     overflow: hidden;
+    margin: 0;
 }
 #enroll {
     top: 0;
@@ -20,9 +21,7 @@
     height: 100vh;
     width: 100%;
 }
-body{
-    overflow: hidden;
-}
+
 #main-nav{
     position: fixed;
     top: 0;
@@ -174,3 +173,25 @@ label#weeks-num{
     background-color: rgb(255, 31, 31);
     border-color: rgb(255, 31, 31);
 }
+.weeks-table-displayer{
+    width: 50%;
+}
+.weeks-table-displayer  thead th:first-child {
+    text-align: center;
+}
+#weeks-table-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+td a img {
+    width: 1.5rem;
+    transition: 0.23s;
+}
+
+td a img:hover {
+    filter: invert(58%) sepia(75%) saturate(5520%) hue-rotate(351deg) brightness(94%) contrast(88%);
+    
+}
+

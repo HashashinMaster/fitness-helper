@@ -233,14 +233,12 @@ function _uploadVideos() {
         case 23:
           res2 = _context3.sent;
           if (res2.data.success) {
-            console.log(res2.data);
             data[week][day][exercise].thumbnail = res2.data.path;
             image = new Image();
             image.src = res2.data.path;
             image.className = "thumbs-upload";
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('#upload-content-container .loading-container').remove();
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('#upload-content-container').prepend(image);
-            console.log(data);
           }
         case 25:
           _context3.next = 30;

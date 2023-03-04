@@ -6,6 +6,8 @@ use App\Models\exercise;
 use App\Models\program;
 use App\Models\week;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use stdClass;
 
 class ProgramController extends Controller
 {
@@ -19,15 +21,15 @@ class ProgramController extends Controller
         foreach( $data as $week => $days){
             if($week === "weeks")
                 continue;
-            $week = new week;
-            $week->program_id = $program->id; 
+            $DB_week = new week;
+            $DB_week->program_id = $program->id; 
             
-            $week->week_number =(int) filter_var($week,FILTER_SANITIZE_NUMBER_INT);
-            $week->save();
+            $DB_week->week_number =(int) filter_var($week,FILTER_SANITIZE_NUMBER_INT);
+            $DB_week->save();
             foreach( $days as $day => $exercises){
                 if($exercises === 'Rest'){
                     $exercise = new exercise;
-                    $exercise->week_id = $week->id;
+                    $exercise->week_id = $DB_week->id;
                     $exercise->training_day = $day;
                     $exercise->action = $exercises;
                     $exercise->save();
@@ -35,7 +37,7 @@ class ProgramController extends Controller
                 }
                 foreach( $exercises as $exercise) {
                     $DB_exercise = new exercise;
-                    $DB_exercise->week_id = $week->id;
+                    $DB_exercise->week_id = $DB_week->id;
                     $DB_exercise->training_day = $day;
                     $DB_exercise->action = "Train";
                     $DB_exercise->exercise_name = $exercise->ExercsiseName;
@@ -62,11 +64,21 @@ class ProgramController extends Controller
         return view('showprograms',["programs" => program::query()->get()]);
     }
     public function find($id){
+        $weeks = week::query()->where('program_id','=',$id)->get();
 
+        $weeksObj = new stdClass();
+        $weeks->each(function($week) use($weeksObj) {
+            $weeksObj->{"week".$week->week_number} = exercise::select( ['training_day',DB::raw('COUNT(training_day) as number_of_exercises')])
+            ->where('action', '=', 'Train')
+            ->where('week_id','=',$week->id)
+            ->groupBy('training_day')
+            ->get();
+        });
+        
         return view('displayprogram',[
-            'program' => program::query()->find($id),
-            'weeks' => week::all()->find($id)
-    ]);
+            'weeks' =>  $weeksObj,
+            'programId' => $id
+        ]);
     }
     public function editProgramName($id){
         program::query()->find($id)->update([
