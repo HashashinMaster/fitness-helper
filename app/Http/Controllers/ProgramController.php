@@ -65,19 +65,18 @@ class ProgramController extends Controller
     }
     public function find($id){
         $weeks = week::query()->where('program_id','=',$id)->get();
-
-        $weeksObj = new stdClass();
-        $weeks->each(function($week) use($weeksObj) {
+         $weekArr = $weeks->map(function($week) {
+            $weeksObj = new stdClass();
             $weeksObj->{"week".$week->week_number} = exercise::select( ['training_day',DB::raw('COUNT(training_day) as number_of_exercises')])
             ->where('action', '=', 'Train')
             ->where('week_id','=',$week->id)
             ->groupBy('training_day')
             ->get();
+            $weeksObj->week_id = $week->id;
+            return $weeksObj;
         });
-        
         return view('displayprogram',[
-            'weeks' =>  $weeksObj,
-            'programId' => $id
+            'weeks' =>  $weekArr,
         ]);
     }
     public function editProgramName($id){

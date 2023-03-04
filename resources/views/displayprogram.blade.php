@@ -13,7 +13,8 @@
         <table class="weeks-table-displayer">
             <thead>
                 <tr>
-                    <th colspan="3">{{array_keys(get_object_vars($weeks))[$loop->index]}}</th>
+                    @php( $keys = array_keys(get_object_vars($week)) )
+                    <th colspan="3">{{$keys[0]}}</th>
                 </tr>
                 <tr>
                     <th>
@@ -28,11 +29,11 @@
                 </tr>
             </thead>
             <tbody>
-                    @foreach($week as $day)
+                    @foreach( $week->{$keys[0]} as $day)
                     <tr>
                     <td>{{$day->training_day}}</td>
                     <td>{{$day->number_of_exercises}}</td>
-                    <td><a href="/train/{{$programId}}/{{$day->training_day}}"><img src="/pics/fire-svgrepo-com.svg" alt="" srcset=""></a></td>
+                    <td><a href="/train/{{ $week->{$keys[1]} }}/{{$day->training_day}}"><img src="/pics/fire-svgrepo-com.svg" alt="" srcset=""></a></td>
                     </tr>
                     @endforeach
             </tbody>
