@@ -33,10 +33,11 @@
         </ul>
     </nav>
     </section>
+
     <div id="main-container">
 
         <section id="video-display-container">
-            <div>
+            <div id="video-container">
                 <video width="100%" src="/{{$exercises[0]->video}}"></video>
             <div id="play-pause-btn">
                 <img  src="/pics/media-pause-svgrepo-com.svg" id="media-player">
@@ -44,25 +45,39 @@
             <div id="desc-header-container">    
                 <h1 >
                     Sets 1/{{$exercises[0]->sets}}
+                    <svg width="3rem" style="cursor: pointer;text-shadow: 2px 2px black;" height="3rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 6V18M5 18L5 6L15 12L5 18Z" stroke="#e25822" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </h1>
                 <h7>
                     {{$exercises[0]->exercise_name}}
                 </h7>
             </div>
-        </div>
-    </section>
+            </div>
+            <div class="video-display-section-footer">
+                <x-icon-container icon="sets" value="{{$exercises[0]->sets}}" />
+                <x-icon-container icon="repetions" value="{{$exercises[0]->repetitions}}" />
+                <x-icon-container icon="weight" value="{{$exercises[0]->weight}}" />
+                <x-icon-container icon="timer" value="30" />
+            </div>
+        </section>
 
-    <section id="videos-container">
-        <h4>Exercises</h4>
-        <div id="div-videos-container">
+        <section id="videos-container">
+            <h4>Exercises</h4>
+            <div id="div-videos-container">
+                @foreach($exercises as $exercise)
+                <x-video-row :exercise="$exercise" />
+                @endforeach
+                @foreach($exercises as $exercise)
+                <x-video-row :exercise="$exercise" />
+                @endforeach
+                @foreach($exercises as $exercise)
+                <x-video-row :exercise="$exercise" />
+                @endforeach
+            </div>
+        </section>
+    </div>
 
-            @foreach($exercises as $exercise)
-            <x-video-row :exercise="$exercise" />
-            @endforeach
-        </div>
-    </section>
-    
-</div>
 </main>
 </body>
 </html>

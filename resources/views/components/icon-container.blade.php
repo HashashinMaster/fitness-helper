@@ -1,34 +1,45 @@
-<div class="video-row">
-    
-    <img src="/{{$exercise->thumbnail}}">
-    <div>
-        <h6 styl>
-            {{$exercise->exercise_name}}
-        </h6>
-        <p>
-            <span style="color: ">
-                {{$exercise->sets}}
-            </span>
-            <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+
+@switch($icon)
+    @case("sets")
+    <div class="icon-info-container">
+        <div class="icon-container" style="background-color: #ffebb7;">
+            <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.5 15C18.9558 18.0448 15.7622 21 12 21C7.14776 21 3.58529 17.5101 3 13" stroke="#9b8748" stroke-width="2" stroke-linecap="round"/>
                 <path d="M3.5 9C4.89106 5.64934 8.0647 3 12 3C16.7819 3 20.4232 6.48993 21 11" stroke="#9b8748" stroke-width="2" stroke-linecap="round"/>
                 <path d="M21 21L21 15.6C21 15.2686 20.7314 15 20.4 15V15L15 15" stroke="#9b8748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M9 9L3.6 9V9C3.26863 9 3 8.73137 3 8.4L3 3" stroke="#9b8748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span style="color:">
-                {{$exercise->repetitions}}
-            </span>
-            <svg width="15px" height="15px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione" preserveAspectRatio="xMidYMid meet">
-                <g fill="#8d79ea">
-                <path d="M39.5 61.1l-6.4-8.7h-.8c-5.6 0-10.2-3.6-10.2-8V25h8l-14-19.2L2 25h8v19.4c0 4.7 2.3 9.1 6.6 12.4c4.2 3.3 9.8 5.2 15.8 5.2c2.4 0 4.8-.3 7.1-.9">
-                </path>
-                <path d="M31.7 11.6c5.6 0 10.2 3.6 10.2 8v19.5h-8L48 58.3l14-19.2h-8V19.6c0-4.7-2.3-9.1-6.5-12.4C43.3 3.8 37.7 2 31.7 2c-2.5 0-4.9.3-7.2.9l6.4 8.7h.8">
-                </path>
-                </g>
-                </svg>
-            <span style="color:">
-                {{$exercise->weight}}
-            </span>
+        </div>
+        <div>
+                <h2>{{$value}}</h2>
+                <h6>Sets</h6>
+        </div>
+    </div>
+        @break
+    @case("repetions")
+    <div class="icon-info-container">
+        <div class="icon-container" style="background-color: #e9e4ff;">
+            <svg width="1rem" height="1rem" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione" preserveAspectRatio="xMidYMid meet">
+            <g fill="#8d79ea">
+            <path d="M39.5 61.1l-6.4-8.7h-.8c-5.6 0-10.2-3.6-10.2-8V25h8l-14-19.2L2 25h8v19.4c0 4.7 2.3 9.1 6.6 12.4c4.2 3.3 9.8 5.2 15.8 5.2c2.4 0 4.8-.3 7.1-.9">
+            </path>
+            <path d="M31.7 11.6c5.6 0 10.2 3.6 10.2 8v19.5h-8L48 58.3l14-19.2h-8V19.6c0-4.7-2.3-9.1-6.5-12.4C43.3 3.8 37.7 2 31.7 2c-2.5 0-4.9.3-7.2.9l6.4 8.7h.8">
+            </path>
+            </g>
+            </svg>
+        </div>
+        <div>
+           <h2>{{$value}}</h2>
+           <h6>Repetitions</h6>
+        </div>
+            
+        
+    </div>
+        @break
+    @case("weight")
+    <div class="icon-info-container">
+        <div class="icon-container" style="background-color: #e8f3e9;">
             <svg fill="#7ba87d" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
             width="27px" height="27px" viewBox="0 0 161.096 161.096"
             xml:space="preserve">
@@ -59,6 +70,26 @@
                 </g>
             </svg>
 
-        </p>
+        </div>
+        <div>
+           <h2>{{$value}}</h2>
+           <h6>Weight</h6>
+        </div>
+            
+        
     </div>
-</div>
+        @break
+    @case("timer")
+        <div class="icon-info-container">
+            <div class="icon-container" style="background-color: #ffe6fa;">
+                <svg fill="#bf5ba5" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.108,20H4a1,1,0,0,0,0,2H20a1,1,0,0,0,0-2H17.892c-.247-2.774-1.071-7.61-3.826-9,2.564-1.423,3.453-4.81,3.764-7H20a1,1,0,0,0,0-2H4A1,1,0,0,0,4,4H6.17c.311,2.19,1.2,5.577,3.764,7C7.179,12.39,6.355,17.226,6.108,20ZM9,16.6c0-1.2,3-3.6,3-3.6s3,2.4,3,3.6V20H9Z"/></svg>
+            </div>    
+            <div>
+                <input type="number" id="rest-input"  style="" value="{{$value}}">
+                <h6>Rest</h6>
+             </div>
+        </div>
+        @break
+        
+@endswitch
+

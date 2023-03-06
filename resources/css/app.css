@@ -211,13 +211,12 @@ td a img:hover {
     border-radius: 2rem;
     
 }
-#video-display-container > div {
+#video-display-container #video-container {
     width: 100%;
     position: relative;
 }
 #video-display-container #play-pause-btn {
     display: flex;
-    opacity: 0;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -229,11 +228,14 @@ td a img:hover {
     left: 2rem;
     cursor: pointer;
     border: 2px solid black;
-    transition: 0.23s;
 
 }
+ #video-display-container  h1, #video-display-container #play-pause-btn, #video-display-container h7 {
+    opacity: 0;
+    transition: 0.3s;
 
-#video-display-container:hover #play-pause-btn {
+}
+#video-display-container:hover #play-pause-btn,#video-display-container:hover  h1, #video-display-container:hover h7 {
     opacity: 1;
 }
 #media-player{
@@ -255,21 +257,21 @@ td a img:hover {
     width: 100%;
     display: flex;
     gap: 2rem;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 #videos-container{
-    background-color: #e25822;
     width: 30%;
     height: 23rem;
-    border-radius: 2rem ;
     padding: 1.5rem;
     overflow: auto;
-    box-shadow: 2px 2px 4px black;
-    border: 2px solid blackdiv-videos-container;
-
+    /* border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem; */
+    border-radius: 2rem;
+    border: 1px solid #e25822;
+    box-shadow: 0px 3px 4px black;
 }
 #videos-container h4 {
-    color: black;
+    color: white;
     margin-bottom: 1.5rem;
 }
 #div-videos-container{
@@ -279,6 +281,7 @@ td a img:hover {
     width: 100%;
 }
 .video-row {
+    cursor: pointer;
     gap: 1rem;
     display: flex;
     width: 100%;
@@ -288,10 +291,65 @@ td a img:hover {
     border-radius: 0.5rem;
 }
 .video-row h6 {
-    color: black;
+    color: white;
     margin: 0;
 }
 .video-row p {
-    color: black;
+    color: white;
     font-size: 17px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.video-display-section-footer{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+.icon-container{
+    width: fit-content;
+    display: flex;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.icon-info-container h2, .icon-info-container h6 {
+    margin: 0;
+}
+.icon-info-container {
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+#rest-input{
+    width: 5rem;
+    margin:0;
+    border:none;
+    height:2.6rem;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+#rest-input:focus {
+    box-shadow: none;
 }
