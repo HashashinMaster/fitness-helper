@@ -6,15 +6,13 @@ use Illuminate\View\Component;
 
 class VideoRow extends Component
 {
-    public $exercise;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($exercise)
+    public function __construct(public $exercise,public $index)
     {
-        $this->exercise = $exercise;
     }
 
     /**

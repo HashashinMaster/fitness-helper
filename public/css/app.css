@@ -359,7 +359,41 @@ td a img:hover {
     height:2.6rem;
     font-weight: bold;
     font-size: 1.7rem;
+    padding: 0;
 }
 #rest-input:focus {
     box-shadow: none;
 }
+.ldBar {
+    position: relative;
+    
+}
+.ldBar.label-center > .ldBar-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #883514;
+  text-shadow: 0 0 3px #fff;
+  font-size: 30px!important;
+}
+.ldBar-label:after {
+  content: "S";
+  display: inline;
+}
+.ldBar.no-percent .ldBar-label:after {
+  content: "";
+}
+#bar-container{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+

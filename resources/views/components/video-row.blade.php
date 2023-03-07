@@ -1,4 +1,4 @@
-<div class="video-row">
+<div class="video-row" data-index ="{{$index}}">
     
     <img src="/{{$exercise->thumbnail}}">
     <div>

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-ress filename="add.js" />
+    <script type="text/javascript" src="/js/loading-bar.js"></script>
+    <x-ress filename="display.js" />
+
 
 </head>
 </head>
@@ -38,14 +40,17 @@
 
         <section id="video-display-container">
             <div id="video-container">
-                <video width="100%" src="/{{$exercises[0]->video}}"></video>
+            
+                <video loop autoplay muted width="100%" src="/{{$exercises[0]->video}}"></video>
             <div id="play-pause-btn">
-                <img  src="/pics/media-pause-svgrepo-com.svg" id="media-player">
+                <img data-action="pause"  src="/pics/media-pause-svgrepo-com.svg" id="media-player">
             </div>
             <div id="desc-header-container">    
-                <h1 >
-                    Sets 1/{{$exercises[0]->sets}}
-                    <svg width="3rem" style="cursor: pointer;text-shadow: 2px 2px black;" height="3rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <h1 data-sets = "{{$exercises[0]->sets}}"  data-current-set = "1">
+                    <span>
+                        Sets 1/{{$exercises[0]->sets}}
+                    </span>
+                    <svg width="3rem" id="next-set" style="cursor: pointer;text-shadow: 2px 2px black;" height="3rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 6V18M5 18L5 6L15 12L5 18Z" stroke="#e25822" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </h1>
@@ -58,26 +63,30 @@
                 <x-icon-container icon="sets" value="{{$exercises[0]->sets}}" />
                 <x-icon-container icon="repetions" value="{{$exercises[0]->repetitions}}" />
                 <x-icon-container icon="weight" value="{{$exercises[0]->weight}}" />
-                <x-icon-container icon="timer" value="30" />
+                @if(isset($_COOKIE['timer']))
+                    <x-icon-container icon="timer" value="{{$_COOKIE['timer']}}" />
+                @else
+                    <x-icon-container icon="timer" value="30" />
+                @endif
+
             </div>
         </section>
 
         <section id="videos-container">
             <h4>Exercises</h4>
-            <div id="div-videos-container">
+            <div id="div-videos-container" data-count={{count($exercises)}}>
                 @foreach($exercises as $exercise)
-                <x-video-row :exercise="$exercise" />
+                <x-video-row :exercise="$exercise" index="{{$loop->index}}" />
                 @endforeach
-                @foreach($exercises as $exercise)
-                <x-video-row :exercise="$exercise" />
-                @endforeach
-                @foreach($exercises as $exercise)
-                <x-video-row :exercise="$exercise" />
-                @endforeach
+
             </div>
         </section>
     </div>
-
 </main>
+</div>
+<div id="bar-container">
+    <div id="myBar" class="label-center" style="width: 11rem;height:11rem;font-size:15px"></div>
+            
+</div>
 </body>
 </html>
