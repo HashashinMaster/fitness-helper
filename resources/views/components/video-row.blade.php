@@ -1,4 +1,9 @@
-<div class="video-row" data-index ="{{$index}}">
+<div 
+    class="video-row" 
+    data-index ="{{$index}}" 
+    data-exercise="{{json_encode($exercise)}}"
+    
+    >
     
     <img src="/{{$exercise->thumbnail}}">
     <div>
@@ -6,7 +11,7 @@
             {{$exercise->exercise_name}}
         </h6>
         <p>
-            <span style="color: ">
+            <span >
                 {{$exercise->sets}}
             </span>
             <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

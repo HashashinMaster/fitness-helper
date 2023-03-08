@@ -12,7 +12,7 @@ class Ress extends Component
      *
      * @return void
      */
-    public function __construct($filename)
+    public function __construct($filename = "")
     {
         $this->filename = $filename;
     }

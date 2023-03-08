@@ -16,3 +16,8 @@ Route::delete('/programs/{id}/delete',[ProgramController::class,'delete']);
 
 //Training Routes
 Route::get('/train/{weekId}/{day}',[TrainController::class,"show"]);
+
+//about Route
+Route::get('/about', function () {
+    return view('about');
+});

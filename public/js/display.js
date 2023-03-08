@@ -18,6 +18,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
   videoPlayAndPauseHandler();
   setCookies();
   handleSets();
+  handleVideoRow();
 });
 function setCookies() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#rest-input').on('input', function () {
@@ -58,7 +59,7 @@ function handleSets() {
         clearInterval(intervalHolder);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').css({
           'height': '',
-          'overflow': 'none'
+          'overflow': ''
         });
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#bar-container').css('display', 'none');
         var sets = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-sets]').attr('data-sets'));
@@ -67,7 +68,13 @@ function handleSets() {
           jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-current-set]').attr('data-current-set', ++currentSet);
           jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-current-set] span').text("Sets ".concat(currentSet, "/").concat(sets));
         } else {
-          alert('sfi rah ssalaw');
+          var exCounter = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#div-videos-container[data-count]').attr('data-count'));
+          var currentIndex = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#video-display-container[data-index]').attr('data-index'));
+          console.log(currentIndex, exCounter);
+          if (currentIndex != exCounter) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".video-row[data-index=".concat(++currentIndex, "]")).trigger('click');
+            console.log(".video-row[data-index=".concat(currentIndex, "]"));
+          } else location.replace('/programs');
         }
       }
     }, 1000);
@@ -87,6 +94,25 @@ function videoPlayAndPauseHandler() {
     if (action === 'play') jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').trigger('play');else jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').trigger('pause');
   });
 }
+function handleVideoRow() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.video-row').each(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).on('click', function () {
+      var _JSON$parse = JSON.parse(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-exercise')),
+        video = _JSON$parse.video,
+        sets = _JSON$parse.sets,
+        repetitions = _JSON$parse.repetitions,
+        weight = _JSON$parse.weight;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').attr('src', "/".concat(video));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sets-counter').text(sets);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#reps-counter').text(repetitions);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#weight-counter').text(weight);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-current-set] span').text("Sets 1/".concat(sets));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-sets]').attr('data-sets', sets);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-current-set]').attr('data-current-set', 1);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#video-display-container[data-index]').attr('data-index', jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-index'));
+    });
+  });
+}
 function getCookie(key) {
   var cookies = document.cookie.split(';');
   var cookie = cookies.find(function (cookie) {
@@ -94,7 +120,6 @@ function getCookie(key) {
   }).replace("".concat(key, "="), '');
   return cookie;
 }
-console.log();
 
 /***/ }),
 

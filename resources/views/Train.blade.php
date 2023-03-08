@@ -38,7 +38,7 @@
 
     <div id="main-container">
 
-        <section id="video-display-container">
+        <section id="video-display-container" data-index ="1">
             <div id="video-container">
             
                 <video loop autoplay muted width="100%" src="/{{$exercises[0]->video}}"></video>
@@ -54,9 +54,14 @@
                         <path d="M19 6V18M5 18L5 6L15 12L5 18Z" stroke="#e25822" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </h1>
-                <h7>
-                    {{$exercises[0]->exercise_name}}
-                </h7>
+                <h5 style="margin: 0;">
+                    {{$exercises[0]->exercise_name}}/{{$exercises[0]->muscle}}
+
+                </h5>
+                <h6>
+                    
+                </h6>
+                
             </div>
             </div>
             <div class="video-display-section-footer">
@@ -66,7 +71,7 @@
                 @if(isset($_COOKIE['timer']))
                     <x-icon-container icon="timer" value="{{$_COOKIE['timer']}}" />
                 @else
-                    <x-icon-container icon="timer" value="30" />
+                    <x-icon-container icon="timer" value="0" />
                 @endif
 
             </div>
@@ -76,7 +81,7 @@
             <h4>Exercises</h4>
             <div id="div-videos-container" data-count={{count($exercises)}}>
                 @foreach($exercises as $exercise)
-                <x-video-row :exercise="$exercise" index="{{$loop->index}}" />
+                <x-video-row :exercise="$exercise" index="{{$loop->index + 1}}" />
                 @endforeach
 
             </div>

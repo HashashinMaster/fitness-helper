@@ -6,6 +6,7 @@ $( () => {
     videoPlayAndPauseHandler();
     setCookies();
     handleSets();
+    handleVideoRow();
     
 } );
 
@@ -54,7 +55,7 @@ function handleSets(){
                 clearInterval(intervalHolder);
                 $('body').css({
                     'height':'',
-                    'overflow': 'none'
+                    'overflow': ''
             });
             $('#bar-container').css('display','none');
             const sets = parseInt($('h1[data-sets]').attr('data-sets'));
@@ -64,7 +65,15 @@ function handleSets(){
                 $('h1[data-current-set] span').text(`Sets ${currentSet}/${sets}`);
             }
             else{
-                alert('sfi rah ssalaw')
+                const exCounter = parseInt($('#div-videos-container[data-count]').attr('data-count'));
+                let currentIndex = parseInt($('#video-display-container[data-index]').attr('data-index'));
+                console.log(currentIndex , exCounter)
+                if(currentIndex != exCounter){
+                    $(`.video-row[data-index=${ ++currentIndex }]`).trigger('click');
+                    console.log(`.video-row[data-index=${ currentIndex }]`)
+                }
+                else
+                    location.replace('/programs');
             }
             }
     
@@ -93,9 +102,26 @@ function videoPlayAndPauseHandler(){
 }
 
 
+function handleVideoRow(){
+    $('.video-row').each( function(){
+        $(this).on('click', function(){
+            const { video, sets, repetitions, weight } = JSON.parse($(this).attr('data-exercise'));
+            $('video').attr('src', `/${video}`);
+            $('#sets-counter').text(sets);
+            $('#reps-counter').text(repetitions);
+            $('#weight-counter').text(weight);
+            $('h1[data-current-set] span').text(`Sets 1/${sets}`);
+            $('h1[data-sets]').attr('data-sets',sets);
+            $('h1[data-current-set]').attr('data-current-set',1);
+            $('#video-display-container[data-index]').attr('data-index',$(this).attr('data-index'));
+        });
+    });
+}
+
+
 function getCookie(key){
     const cookies = document.cookie.split(';');
     const cookie = cookies.find( cookie => cookie.includes(key)).replace(`${key}=`,'');
     return cookie;
 }
-console.log()
+

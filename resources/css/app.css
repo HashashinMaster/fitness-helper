@@ -382,6 +382,7 @@ td a img:hover {
     bottom: 0;
     right: 0;
     left: 0;
+    height: 110vh;
     background-color: rgba(0, 0, 0,0.4);
     justify-content: center;
     align-items: center;

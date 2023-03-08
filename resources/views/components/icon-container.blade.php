@@ -12,7 +12,7 @@
             </svg>
         </div>
         <div>
-                <h2>{{$value}}</h2>
+                <h2 id="sets-counter">{{$value}}</h2>
                 <h6>Sets</h6>
         </div>
     </div>
@@ -30,7 +30,7 @@
             </svg>
         </div>
         <div>
-           <h2>{{$value}}</h2>
+           <h2 id="reps-counter">{{$value}}</h2>
            <h6>Repetitions</h6>
         </div>
             
@@ -72,7 +72,7 @@
 
         </div>
         <div>
-           <h2>{{$value}}</h2>
+           <h2 id="weight-counter">{{$value}}</h2>
            <h6>Weight</h6>
         </div>
             
