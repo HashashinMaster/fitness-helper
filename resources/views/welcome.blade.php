@@ -8,10 +8,8 @@
    <body>
     <section id="home-section">
         <x-nav/>
-        @php 
-        $videos = ["/videos/lifting.mp4", "/videos/7bal.mp4"];
-        @endphp
-        <video autoplay muted width="100%" src= {{$videos[array_rand($videos)]}} ></video>
+        @php($videos = ["/videos/lifting.mp4", "/videos/7bal.mp4",'/videos/l7bal3wtani.mp4','/videos/ki5dmBack.mp4'])
+        <video autoplay  muted width="100%" src= {{$videos[array_rand($videos)]}} ></video>
         <div id="enroll" >
             <blockquote>
                 <h3>{{$quote}}</h3>

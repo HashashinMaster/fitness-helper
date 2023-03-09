@@ -101,7 +101,9 @@ function handleVideoRow() {
         video = _JSON$parse.video,
         sets = _JSON$parse.sets,
         repetitions = _JSON$parse.repetitions,
-        weight = _JSON$parse.weight;
+        weight = _JSON$parse.weight,
+        muscle = _JSON$parse.muscle,
+        exercise_name = _JSON$parse.exercise_name;
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('video').attr('src', "/".concat(video));
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sets-counter').text(sets);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#reps-counter').text(repetitions);
@@ -110,6 +112,7 @@ function handleVideoRow() {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-sets]').attr('data-sets', sets);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('h1[data-current-set]').attr('data-current-set', 1);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#video-display-container[data-index]').attr('data-index', jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-index'));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ex-name').text("".concat(exercise_name, "/").concat(muscle));
     });
   });
 }

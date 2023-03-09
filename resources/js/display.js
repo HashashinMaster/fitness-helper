@@ -105,7 +105,7 @@ function videoPlayAndPauseHandler(){
 function handleVideoRow(){
     $('.video-row').each( function(){
         $(this).on('click', function(){
-            const { video, sets, repetitions, weight } = JSON.parse($(this).attr('data-exercise'));
+            const { video, sets, repetitions, weight, muscle, exercise_name } = JSON.parse($(this).attr('data-exercise'));
             $('video').attr('src', `/${video}`);
             $('#sets-counter').text(sets);
             $('#reps-counter').text(repetitions);
@@ -114,6 +114,7 @@ function handleVideoRow(){
             $('h1[data-sets]').attr('data-sets',sets);
             $('h1[data-current-set]').attr('data-current-set',1);
             $('#video-display-container[data-index]').attr('data-index',$(this).attr('data-index'));
+            $('#ex-name').text(`${exercise_name}/${muscle}`);
         });
     });
 }
