@@ -397,4 +397,8 @@ td a img:hover {
     align-items: center;
     z-index: 100;
 }
-
+#about-section{
+    width: -moz-fit-content;
+    width: fit-content;
+    margin:  auto;
+}

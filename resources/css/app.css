@@ -388,3 +388,7 @@ td a img:hover {
     align-items: center;
     z-index: 100;
 }
+#about-section{
+    width: fit-content;
+    margin:  auto;
+}

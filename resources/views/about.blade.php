@@ -10,9 +10,14 @@
 <body>
     <main>
         <x-nav />
-        <section>
+        <section id="about-section">
             <h1>About</h1>
-            <p>Chat gpt mn b3d</p>
+            <ul>
+                <li>This web app is for people who are new to weight lifting and videos <br> and guidness to how to train correctly at home.</li>
+                <li>if you found this web app helpfull click that star button to motivate <br> making more solutions. </li>
+            
+            </ul>
+            
         </section>
     </main>
 </body>
