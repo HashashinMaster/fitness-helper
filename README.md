@@ -1,6 +1,12 @@
 # fitness-helper
 If You are beginner of the fitness world, plus you want to train at home and have obstructions like counting how much sets left, forgetting how much reps u need, have 10 windows opened to see how do your exercise correctly, then this app is for you.
 
+
+# Sections
+
+[Requirement](Requirement)
+
+
 # Requirement
 - PHP >= 8.0.2.
 - node.js >= v14.18.1
@@ -38,6 +44,7 @@ Now you can use the app or modify it however you like.
     2. Training Days:
         - If you click on view, you can see all days you choosed to train on it, the number of exercises you have for each one, and train action button to start                training.
     3. Training:
+        - In top you have a nav with days of the week, the days you choose to train on are highlighted with orange and the day u clicked on is highlighted as well                  with a fire icon.
         - When you click on train action button to start training you redirect to another page. in this page on the left:
             - you can see the video you uploaded looping
             - how much sets you have
@@ -48,5 +55,7 @@ Now you can use the app or modify it however you like.
             - on hover how much sets left
             - on hover you can play and pause the video
             - input to store the rest time cookie for every sets in seconds with validation
+        - on the right side of the page you have all exercises you have in that day with the ability to select an exercise.
         
+# Screenshots
   
