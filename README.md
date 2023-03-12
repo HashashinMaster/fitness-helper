@@ -4,7 +4,7 @@ If You are beginner of the fitness world, plus you want to train at home and hav
 
 # Sections
 
-[Requirement](Requirement)
+[Requirement](/#Requirement)
 
 
 # Requirement
