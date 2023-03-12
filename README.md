@@ -1,11 +1,5 @@
 # fitness-helper
-If You are beginner of the fitness world, plus you want to train at home and have obstructions like counting how much sets left, forgetting how much reps u need, have 10 windows opened to see how do your exercise correctly, then this app is for you.
-
-
-# Sections
-
-[Requirement](/#Requirement)
-
+If You are beginner of the fitness world, plus you want to train at home and have obstructions like counting how much sets left, forgetting how much reps you need, have 10 windows opened to see how to do your exercise correctly, then this app is for you.
 
 # Requirement
 - PHP >= 8.0.2.
@@ -34,7 +28,7 @@ Now you can use the app or modify it however you like.
     1. Random Quotes:
         - every time you enter the home page u get a random quote from database
     2. Dynamic form:
-        - Form inputs change based on number of exercises,weeks you choosed and if you choosed to train that day or not.
+        - Form inputs changes based on the number of exercises,weeks you choosed and if you choosed to train that day or not.
     3. Dynamic Validation:
         - All the inputs generated get validated before moving to next ation.
     
@@ -44,9 +38,9 @@ Now you can use the app or modify it however you like.
     2. Training Days:
         - If you click on view, you can see all days you choosed to train on it, the number of exercises you have for each one, and train action button to start                training.
     3. Training:
-        - In top you have a nav with days of the week, the days you choose to train on are highlighted with orange and the day u clicked on is highlighted as well                  with a fire icon.
+        - In top you have a nav with days of the week, the days you choose to train are highlighted with orange and the day u clicked on is highlighted as well                  with a fire icon.
         - When you click on train action button to start training you redirect to another page. in this page on the left:
-            - you can see the video you uploaded looping
+            - you can see the video of one exercise you uploaded looping
             - how much sets you have
             - exercise name
             - muscle name
@@ -55,7 +49,34 @@ Now you can use the app or modify it however you like.
             - on hover how much sets left
             - on hover you can play and pause the video
             - input to store the rest time cookie for every sets in seconds with validation
-        - on the right side of the page you have all exercises you have in that day with the ability to select an exercise.
+        - On the right side of the page you have all exercises you have in that day with the ability to select an exercise.
+        - Counting sets for you. And when you are done it moves automaticly to the next exercise.
         
 # Screenshots
-  
+  ![image](https://user-images.githubusercontent.com/97839369/224556878-eae741fc-f3ba-45c5-98eb-fd7c34dc5433.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224556924-54226972-9768-460d-9745-9c3369126d3d.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224556969-4c1f8db7-af54-4e52-b5c1-bc3055e7b480.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557240-da1cafb1-1c78-494d-b531-5f54dcc5c9aa.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557255-1c434e8c-99e7-420f-a1f9-1157637d7ebe.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557339-86cbe091-c8d8-4d9f-b080-826e0394a01e.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557480-dd7a819c-9357-45cd-8e6b-99034851398e.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557519-7b9f0ce3-c39f-4e85-b7f3-bcfd30ec6e40.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557548-22c673ce-35fc-4283-9dcb-6b2fc1de348f.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557582-7a4d6c33-6a71-4b9d-9fff-11964387bcca.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557786-4b897931-22d8-40c7-abab-a752967d6c04.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557611-1d095e7a-1fb8-435f-a40d-f0cb31ae1c02.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557886-04e7b44c-ad4a-49c9-a58c-47b9ae7aa46d.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557911-097031ac-e84c-4e4f-ad9d-8a6afdd8bec7.png)
+  ![image](https://user-images.githubusercontent.com/97839369/224557950-da58c0f6-f23d-4bea-9a3a-e88e43939b7a.png)
+
+
+
+
+
+
+
+
+
+
+
+
