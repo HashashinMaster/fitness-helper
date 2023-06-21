@@ -1,3 +1,4 @@
+
 # fitness-helper
 If You are beginner of the fitness world, plus you want to train at home and have obstructions like counting how much sets left, forgetting how much reps you need, have 10 windows opened to see how to do your exercise correctly, then this app is for you.
 
@@ -70,7 +71,10 @@ Now you can use the app or modify it however you like.
   ![image](https://user-images.githubusercontent.com/97839369/224557950-da58c0f6-f23d-4bea-9a3a-e88e43939b7a.png)
 
 
-
+# video demo
+<a href="https://www.linkedin.com/posts/el-mahdi-bouzkoura_i-apologies-for-the-lag-only-god-knows-how-activity-7041563808401641472-9Cz4?utm_source=share&utm_medium=member_desktop">
+<img src="https://media.licdn.com/dms/image/D4E05AQGrAr75ddiK_Q/videocover-low/0/1678839594023?e=1687968000&v=beta&t=cBFrXXvn2qr3JptlFS6Tk4rpIaHXcLlbj6BxRtZ-9Vg" />
+</a>
 
 
 
